@@ -1,27 +1,19 @@
 document.getElementById('calcForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const num1 = BigInt(document.getElementById('num1').value);
-    const num2 = BigInt(document.getElementById('num2').value);
+    const num1Input = document.getElementById('num1').value;
     const operation = document.getElementById('operation').value;
+
+    // Parse the first number with potential 'm'
+    const num1 = parseSpecialNumber(num1Input);
+    
     let result;
 
     switch (operation) {
-        case 'add':
-            result = (num1 + num2).toString();
+        case 'hexate':
+            result = hexate(num1).toString();
             break;
-        case 'sub':
-            result = (num1 - num2).toString();
-            break;
-        case 'multi':
-            result = (num1 * num2).toString();
-            break;
-        case 'divi':
-            result = (num1 / num2).toString();
-            break;
-        case 'expo':
-            result = BigInt(num1 ** Number(num2)).toString(); // This can only handle small exponents.
-            break;
+        // Include cases for other operations as needed
         default:
             result = 'Invalid operation';
     }
@@ -29,26 +21,27 @@ document.getElementById('calcForm').addEventListener('submit', function(event) {
     document.getElementById('result').innerText = `Result: ${result}`;
 });
 
-document.getElementById('trigForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+// Function to parse numbers with placeholders
+function parseSpecialNumber(input) {
+    // Here we define M as a placeholder value (for example, Graham's number)
+    const M = BigInt(10 ** 100); // Example placeholder, can be modified as needed
 
-    const angle = parseFloat(document.getElementById('angle').value);
-    const trigOperation = document.getElementById('trigOperation').value;
-    let trigResult;
-
-    switch (trigOperation) {
-        case 'cos':
-            trigResult = Math.cos(angle).toFixed(4);
-            break;
-        case 'sin':
-            trigResult = Math.sin(angle).toFixed(4);
-            break;
-        case 'tan':
-            trigResult = Math.tan(angle).toFixed(4);
-            break;
-        default:
-            trigResult = 'Invalid operation';
+    if (input.endsWith('m')) {
+        const base = BigInt(input.slice(0, -1));
+        return M * base; // Placeholder value multiplied by the number
+    } else {
+        return BigInt(input); // Regular number
     }
+}
 
-    document.getElementById('trigResult').innerText = `Result: ${trigResult}`;
-});
+// Function for Hexation
+function hexate(base) {
+    if (base <= 0n) return 1n; // Base case for hexation
+    return BigInt(10n ** Number(base)); // Example: can be adjusted based on your definition
+}
+
+// Placeholder for conversion to specific number sets (e.g., Graham's number, etc.)
+function convertToSpecialNotation(value) {
+    // Example: convert result to a different representation
+    return value.toString() + 'K'; // This is just a placeholder example
+}
