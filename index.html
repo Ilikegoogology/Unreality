@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unreality - The Smartest Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Unreality</h1>
+        <p>The Smartest Calculator for Big Numbers and More!</p>
+    </header>
+    <main>
+        <section>
+            <h2>Basic Operations</h2>
+            <form id="calcForm">
+                <input type="number" id="num1" placeholder="Enter first number" required>
+                <input type="number" id="num2" placeholder="Enter second number" required>
+                <select id="operation">
+                    <option value="add">Add</option>
+                    <option value="sub">Subtract</option>
+                    <option value="multi">Multiply</option>
+                    <option value="divi">Divide</option>
+                    <option value="expo">Exponent</option>
+                </select>
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="result"></div>
+        </section>
+        <section>
+            <h2>Trigonometric Functions</h2>
+            <form id="trigForm">
+                <input type="number" id="angle" placeholder="Enter angle (radians)" required>
+                <select id="trigOperation">
+                    <option value="cos">Cosine</option>
+                    <option value="sin">Sine</option>
+                    <option value="tan">Tangent</option>
+                </select>
+                <button type="submit">Calculate</button>
+            </form>
+            <div id="trigResult"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartCalc. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
